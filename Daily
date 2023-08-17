@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+    function setPrompt() {
+      var today = new Date();
+      var targetDate = new Date(today.getFullYear(), 7, 17, 0, 0, 0); // August is represented by index 7
+
+      if (today > targetDate) {
+        targetDate.setDate(targetDate.getDate() + 1); // Move to the next day
+      }
+
+      var timeUntilReset = targetDate - today;
+      setTimeout(function() {
+        document.getElementById('prompt').style.display = 'block';
+      }, timeUntilReset);
+    }
+  </script>
+  <style>
+    #prompt {
+      display: none;
+      margin: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body onload="setPrompt()">
+  <div id="prompt">
+    <p>What was your one thing today?</p>
+    <input type="text" id="answer" placeholder="Enter your answer...">
+  </div>
+</body>
+</html>
